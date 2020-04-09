@@ -25,7 +25,7 @@ SECRET_KEY = 'rrxlcu#voe^^fu@v6c!3orv-dbi33hii%ri4p5kerxi!zzd^e@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['trainsimlive.herokuapp.com']
+ALLOWED_HOSTS = ['trainsimadmin.herokuapp.com']
 
 LOGIN_REDIRECT_URL = 'views.welcome()'
 # Application definition
