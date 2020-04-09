@@ -7,7 +7,7 @@ from datetime import datetime, timedelta, time,date
 
 def station_status(request):
     station = request.POST['Station']
-    return render(request,)
+    return render(request)
 def dist_up(schedule,stations,x):
     filename_d = "statics/csv/distance_up.csv"
 
