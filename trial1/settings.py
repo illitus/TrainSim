@@ -25,7 +25,7 @@ SECRET_KEY = 'rrxlcu#voe^^fu@v6c!3orv-dbi33hii%ri4p5kerxi!zzd^e@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['trainsimadmin.herokuapp.com']
+ALLOWED_HOSTS = ['trainsimadmin.herokuapp.com', 'localhost']
 
 LOGIN_REDIRECT_URL = 'views.welcome()'
 # Application definition
@@ -139,6 +139,3 @@ STATICFILES_DIRS = (
 #  Add configuration for static files storage using whitenoise
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-import dj_database_url 
-prod_db  =  dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
