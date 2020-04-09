@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    {%load staticfiles%}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+    <title>Dashboard</title>
+  </head>
+  <body>
+    <div class="container" style="line-height: 0;">
+        <div class="row">
+          <div class="col-sm-8">
+              <p>TRAINSIM ADMIN</p>
+              <h3><B>DASHBOARD</B></h3>
+          </div>
+          <div class="col-sm-4" style="text-align: right;">
+              <p><a href="{%url 'welcome_logged_in'%}" style="color:white">Go Back to Menu</p></a>
+              <br>
+              <p>SYSTEM TIME: {{timenow}}</p>
+          </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="container">
+        {%for each,tr in ziplist%}
+        <div>
+          <img src={%static 'css/images/cgvir.png'%} style="max-width: 100%;  z-index: 2;">
+          <div style="position: relative; top: -110px; left: {{each.2}}px; z-index: 4;max-width: fit-content; font-stretch:condensed" data-toggle="tooltip"  data-placement="top" title="{{each.3}} km from {{each.1}}, On-Time">
+            <svg width="35" height="70">
+              <g>
+                <rect x="2" y="2" rx="5" ry="5" width="30" height="65"style="fill:green;stroke:black;stroke-width:3;opacity:0.8"></rect>
+                <text x="-60" y="20" transform="rotate(-90)" fill="white" style="text-stretch:condensed"> ON-TIME</text>   
+              </g>
+            </svg>
+          </div>
+          <div class="timestamp">
+            {%for time in tr%}
+              <p style="display: inline-block; text-align:center; font-size:10px; padding: 6px; ">{{time}}</p>
+            {%endfor%}
+          </div>
+          <h5 style="color:black;position: relative; top: -260px; left: 50px; z-index: 5;"><b>{{each.0}}</b></h5>
+          <a style="color:black;position: relative; top: -292px; left: 850px; text-align:right; z-index: 6;opacity:0.6" href="{{each.0}}">Route Info / Custom Delay</a>
+        </div>
+      {%endfor%}       
+    </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+      $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+      });
+    </script>
+  </body>
+</html>

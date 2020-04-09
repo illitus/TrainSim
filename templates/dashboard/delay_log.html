@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    {%load staticfiles%}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+    <title>Custom Delay</title>
+  </head>
+  <body>
+    <div class="container" style="line-height: 0;">
+        <div class="row">
+          <div class="col-sm-8">
+              <p>TRAINSIM ADMIN</p>
+              <h3 style="color:white"><B>DELAY LOG</B></h3>
+          </div>
+          <div class="col-sm-4" style="text-align: right;">
+              <p><a href="{%url 'welcome'%}" style="color:white">Go Back to Menu</p></a>
+              <br>
+              <p>SYSTEM TIME: {{timenow}}</p>
+          </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="container">
+        <table style="width:100%">
+            <tr>
+                <th> Date </th>
+                <th> Time </th>
+                <th> Line </th>
+                <th> Route </th>
+                <th> Station </th>
+                <th> Report </th>
+            </tr>
+            {%for each in rows%}
+            <tr>
+                <td>{{each.0}}</td>
+                <td>{{each.1}}</td>
+                <td>{{each.2}}</td>                
+                <td>{{each.3}}</td>                
+                <td>{{each.4}}</td>
+                <td>{{each.5}}</td>              
+            </tr>
+            {%endfor%}
+        </table>    
+    </div>
+    </body>
+</html>

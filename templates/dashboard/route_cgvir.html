@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    {%load staticfiles%}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+    <title>Custom Delay</title>
+  </head>
+  <body>
+    <div class="container" style="line-height: 0;">
+        <div class="row">
+          <div class="col-sm-8">
+              <p>TRAINSIM ADMIN</p>
+              <a href={%url 'dashboard_cgvir'%}><h3 style="color:white"><B>DASHBOARD</B></h3></a>
+          </div>
+          <div class="col-sm-4" style="text-align: right;">
+              <p><a href="{%url 'welcome'%}" style="color:white">Go Back to Menu</p></a>
+              <br>
+              <p>SYSTEM TIME: {{timenow}}</p>
+          </div>
+        </div>
+    </div>
+    <br><br><br>
+    <div class="container">
+        <div style="height:250px">
+          <img src={%static 'css/images/cgvir.png'%} style="max-width: 100%;  z-index: 2;">
+          <div style="position: relative; top: -110px; left: {{each.2}}px; z-index: 4;max-width: fit-content; font-stretch:condensed" data-toggle="tooltip"  data-placement="top" title="{{each.3}} km from {{each.1}}, On-Time">
+            <svg width="35" height="70">
+              <g>
+                <rect x="2" y="2" rx="5" ry="5" width="30" height="65"style="fill:green;stroke:black;stroke-width:3;opacity:0.8"></rect>
+                <text x="-60" y="20" transform="rotate(-90)" fill="white" style="text-stretch:condensed"> ON-TIME</text>   
+              </g>
+            </svg>
+          </div>
+          <div class="timestamp">
+            {%for time in tr%}
+              <p style="display: inline-block; text-align:center; font-size:10px; padding: 6px; ">{{time}}</p>
+            {%endfor%}
+          </div>
+          <h5 style="color:black;position: relative; top: -260px; left: 50px; z-index: 5;"><b>{{each.0}}</b></h5>
+          <a style="color:black;position: relative; top: -292px; left: 850px; text-align:right; z-index: 6;opacity:0.6" href="{%url 'dashboard_cgvir'%}">Back to Main Menu</a>
+     
+        </div>
+    </div> 
+
+    <div class="container">
+              <h4 style="text-align:center"><b>CUSTOM DELAY</b></h4>
+
+        <div class="row">
+            <div class="col-6">
+                <br>
+                <form action="{{each.0}}/delay/" method="post">
+                  {%csrf_token%}
+                  <label for="Station">Travelled from</label>
+                      <select id="Station" class="form-control" name="Station">
+                        <option selected>Choose station</option>
+                        {%for each in statlist%}
+                        <option>{{each}}</option> {%endfor%}
+                      </select>
+                      <label for="Distance">Distance Travelled</label>
+                      <input type="number" step="0.01" class="form-control" name="Distance" id="Distance"> <br>
+                      <button type="submit" class="btn btn-primary">Calculate Delay</button>
+                      <a href="{%url 'cgvir_route' each.0%}" style="color:white">CLEAR</a>
+                </form>
+            </div>
+            <div class="col-6">
+                <h4>Result: </h4>
+                <p>{{res}}</p>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>

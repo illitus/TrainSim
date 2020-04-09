@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    {%load staticfiles%}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <style>
+        a {
+            color:white; align:center
+        }
+    </style>
+    <title>TrainSim Admin</title>
+    </head>
+    <body>
+    <div class="container" style="margin-top:200px; text-align:center">
+        <h3 style="text-align:center;">TRAINSIM <b>ADMIN</b></h3><br><br>
+        <p>Live Dashboard</p>
+        <form action="{%url 'dashboard'%}" method="post">
+            {%csrf_token%}
+            <label for="Line">Line</label>
+                <select id="Line" class="form-control" name="Line">
+                <option selected>Choose line</option>
+                <option>WR : Virar to Churchgate</option>
+                <option>WR : Churchgate to Virar</option>
+                </select>
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </form><hr>
+        <p><a href="{%url 'delay_log'%}" style="color:white">Delay Log Reports</a></p><hr>
+        <p>Station Status</p>
+        <form action="{%url 'station_status'%}" method="post">
+            {%csrf_token%}
+            <label for="Station">Station</label>
+                <select id="Station" class="form-control" name="Station">
+                <option selected>Choose station</option>
+                {%for each in statlist%}
+                <option>{{each}}</option> {%endfor%}
+                </select>
+                <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    </body>
+</html>

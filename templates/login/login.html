@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    {%load staticfiles%}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+
+    <title>TrainSim Admin</title>
+    </head>
+    <body>
+    <div class="container" style="margin-top:200px">
+        <h3 style="text-align:center;">TRAINSIM <b>ADMIN</b></h3>
+        <form action="{%url 'welcome'%}" method="post">
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input class="form-control" name="username" id="username"> <br>
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password"> <br>
+      <button type="submit">Login</button>
+        </form>
+        <p style="display:{{status}};" id="login_error">Your credentials do not match the records. Please check again.</p>
+    </div>
+    </body>
+</html>
