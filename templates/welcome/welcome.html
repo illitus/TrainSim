@@ -22,25 +22,23 @@
         <p>Live Dashboard</p>
         <form action="{%url 'dashboard'%}" method="post">
             {%csrf_token%}
-            <label for="Line">Line</label>
                 <select id="Line" class="form-control" name="Line">
                 <option selected>Choose line</option>
                 <option>WR : Virar to Churchgate</option>
                 <option>WR : Churchgate to Virar</option>
-                </select>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                </select><br>
+                <button type="submit" class="btn btn-primary" style="padding-top:10px">Submit</button>
         </form><hr>
-        <p><a href="{%url 'delay_log'%}" style="color:white">Delay Log Reports</a></p><hr>
+        <h5><a href="{%url 'delay_log'%}" style="color:white">DELAY LOG REPORTS</a></h5><hr>
         <p>Station Status</p>
         <form action="{%url 'station_status'%}" method="post">
             {%csrf_token%}
-            <label for="Station">Station</label>
                 <select id="Station" class="form-control" name="Station">
                 <option selected>Choose station</option>
                 {%for each in statlist%}
                 <option>{{each}}</option> {%endfor%}
                 </select>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <br><button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
     </body>
