@@ -569,6 +569,7 @@ def dashboard_cgvir(request):
         # extracting each data row one by one
         for row in csvreader:
             statlist.append(row[0])
+    statlist.reverse()
     # fetching current time
     x = datetime.now()
     #x=time(10,3,0)
@@ -605,7 +606,7 @@ def dashboard_cgvir(request):
                 if schedule[k] == x:
                     s = dist_down(schedule,stations,x)
                     details.append(stations[k].upper())
-                    details.append(10+statlist.index(stations[k])*37.5)
+                    details.append(20+statlist.index(stations[k])*38)
                     details.append(s)
                     flag = False
                     break
@@ -616,7 +617,7 @@ def dashboard_cgvir(request):
                     if schedule[k] > x:
                         s = dist_down(schedule,stations,x)
                         details.append(stations[k - 1].upper())
-                        details.append(10+statlist.index(stations[k-1])*37.5)                    
+                        details.append(20+statlist.index(stations[k-1])*38)                    
                         details.append(s)
                         flag = False
                         break
@@ -790,6 +791,7 @@ def cgvir_route(request,routecode):
         # extracting each data row one by one
         for row in csvreader:
             statlist.append(row[0])
+    statlist.reverse()
     #print(os.getcwd())
     # reading csv file
     with open(cg_up, 'r') as csvfile:
@@ -1029,6 +1031,7 @@ def cgvir_delay(request,routecode):
         # extracting each data row one by one
         for row in csvreader:
             statlist.append(row[0])
+    statlist.reverse()
     #print(os.getcwd())
     # reading csv file
     with open(cg_up, 'r') as csvfile:
