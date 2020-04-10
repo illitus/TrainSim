@@ -1303,7 +1303,7 @@ def mitigation_up(request,route):
                 "The delay cannot be mitigated completely.\n"
                 "The train must maintain an average speed above " +str(m_speed)+ " to minimize the delay.")
             report = "There is a major delay in the route. The delay cannot be mitigated completely. The train must maintain an average speed above " +str(m_speed)+ " kmph to minimize the delay."
-            with open('delay.csv', 'a', newline='') as file:
+            with open('statics/csv/delay.csv', 'a', newline='') as file:
                 writer = csv.writer(file)
                 writer.writerow([date.today(), x, 'Churchgate_Up', route, delay, loc, "No", report])
 
@@ -1312,7 +1312,7 @@ def mitigation_up(request,route):
             res=("There is a minor delay in the route.\n"
                 "For the delay to be mitigated the train must maintain an average speed of {} kmph for the remaining distance.".format(round(m_speed, 2)))
             report = "There is a minor delay in the route. For the delay to be mitigated the train must maintain an average speed of" +str(round(m_speed, 2))+ "kmph"
-            with open('delay.csv', 'a', newline='') as file:
+            with open('statics/csv/delay.csv', 'a', newline='') as file:
                 writer = csv.writer(file)
                 writer.writerow([date.today(), x, 'Churchgate_Up', route, delay, loc, "Yes", report])
     return(res)
@@ -1491,7 +1491,7 @@ def mitigation_down(request,route):
                 "The delay cannot be mitigated completely.\n"
                 "The train must maintain an average speed above " +str(m_speed)+ " to minimize the delay.")
             report = "There is a major delay in the route. The delay cannot be mitigated completely. The train must maintain an average speed above " +str(m_speed)+ " kmph to minimize the delay."
-            with open('delay.csv', 'a', newline='') as file:
+            with open('statics/csv/delay.csv', 'a', newline='') as file:
                 writer = csv.writer(file)
                 writer.writerow([date.today(), x, 'Churchgate_Up', route, delay, loc, "No", report])
 
@@ -1500,7 +1500,7 @@ def mitigation_down(request,route):
             res=("There is a minor delay in the route.\n"
                 "For the delay to be mitigated the train must maintain an average speed of {} kmph for the remaining distance.".format(round(m_speed, 2)))
             report = "There is a minor delay in the route. For the delay to be mitigated the train must maintain an average speed of" +str(round(m_speed, 2))+ "kmph"
-            with open('delay.csv', 'a', newline='') as file:
+            with open('statics/csv/delay.csv', 'a', newline='') as file:
                 writer = csv.writer(file)
                 writer.writerow([date.today(), x, 'Virar_Down', route, delay, loc, "Yes", report])
     return(res)

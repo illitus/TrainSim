@@ -34,8 +34,10 @@
                 <th> Time </th>
                 <th> Line </th>
                 <th> Route </th>
+                <th> Distance </th>
                 <th> Station </th>
-                <th> Report </th>
+                <th> Mitigated </th>
+                
             </tr>
             {%for each in rows%}
             <tr>
@@ -44,7 +46,9 @@
                 <td>{{each.2}}</td>                
                 <td>{{each.3}}</td>                
                 <td>{{each.4}}</td>
-                <td>{{each.5}}</td>              
+                <td>{{each.5}}</td>
+                <td>{{each.6}}</td>
+                             
             </tr>
             {%endfor%}
         </table>    
